@@ -6,11 +6,21 @@ namespace HomeExamLibrary
 {
     class Cube : I3DStorageObject
     {
-       
+        double x;
+        double z;
+        double y;
         //constructor
-        public Cube(int x,int y,int z) 
+        public Cube(double side, double aArea, double aVolume,double aWeight,string aDescription,double aMaxDimension,bool aIsFragile) 
         {
-            Area = x*y*z;
+            x = y = z = side;
+            Area = aArea;
+            Volume = aVolume;
+            Weight = aWeight;
+            Description = aDescription;
+            MaxDimension = aMaxDimension;
+            IsFragile = aIsFragile;
+            
+            
         }
         public string Description { get; set; }
         public double Weight { get; set; }
