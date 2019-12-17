@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,19 +7,19 @@ namespace HomeExamLibrary
 {
     class Cube : I3DStorageObject
     {
-        double x;
-        double z;
-        double y;
+       public double x;
+       public double z;
+       public double y;
         //constructor
-        public Cube(double side, double aArea, double aVolume,double aWeight,string aDescription,double aMaxDimension,bool aIsFragile) 
+        public Cube(double side, double weight,string description,double maxDimension,bool isFragile) 
         {
             x = y = z = side;
-            Area = aArea;
-            Volume = aVolume;
-            Weight = aWeight;
-            Description = aDescription;
-            MaxDimension = aMaxDimension;
-            IsFragile = aIsFragile;
+            Area = side * side * 6;
+            Volume = side * side * side;
+            Weight = weight;
+            Description = description;
+            MaxDimension = maxDimension;
+            IsFragile = isFragile;
             
             
         }
