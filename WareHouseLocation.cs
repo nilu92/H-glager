@@ -4,8 +4,16 @@ using System.Text;
 
 namespace HomeExamLibrary
 {
-    class WareHouseLocation : WareHouse
+    public class WareHouseLocation : WareHouse
     {
+
+        List<WareHouseLocation>[] locations = new List<WareHouseLocation>[]
+        {
+            new List<WareHouseLocation>(100),
+            new List<WareHouseLocation>(100),
+            new List<WareHouseLocation>(100),
+        };    
+
         public double MaxVolume;
         public double MaxWeight;
 
