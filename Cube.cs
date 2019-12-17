@@ -8,9 +8,9 @@ namespace HomeExamLibrary
     {
        
         //constructor
-        public Cube(double aArea) 
+        public Cube(int x,int y,int z) 
         {
-            Area = aArea;
+            Area = x*y*z;
         }
         public string Description { get; set; }
         public double Weight { get; set; }
