@@ -6,6 +6,12 @@ namespace HomeExamLibrary
 {
     class Cube : I3DStorageObject
     {
+       
+        //constructor
+        public Cube(double aArea) 
+        {
+            Area = aArea;
+        }
         public string Description { get; set; }
         public double Weight { get; set; }
         public double Volume { get; set; }
