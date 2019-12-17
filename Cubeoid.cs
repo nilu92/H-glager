@@ -8,8 +8,9 @@ namespace HomeExamLibrary
     {
         public Cubeoid(double x, double y,double z,  double weight,double maxDimension, string description,bool isFragile) 
         {
-            Area = 
-            Volume = 
+            //formel SA = 2lh + 2wh + 2lw
+            Area = 2*(x * y) + 2 *(z * y) + 2*(x * z);
+            Volume = x * y * z;
             Weight = weight;
             MaxDimension = maxDimension;
             Description = description;
