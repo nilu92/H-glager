@@ -4,13 +4,13 @@ using System.Text;
 
 namespace HomeExamLibrary
 {
-    class Sphere : I3DStorageObject
+    public class Sphere : I3DStorageObject
     {
 
-        public Sphere(double radius, double weight, string description, double maxDimension, bool isFragile) 
+        public Sphere(double radius, double weight, string description, double maxDimension, bool isFragile)
         {
 
-            Area = 4/3 * Math.PI * radius * radius * radius;
+            Area = 4 / 3 * Math.PI * radius * radius * radius;
             Volume = Math.PI * 4 * radius * radius;
             Weight = weight;
             MaxDimension = maxDimension;
@@ -18,8 +18,8 @@ namespace HomeExamLibrary
             IsFragile = isFragile;
 
         }
-            
-        
+
+
         public string Description { get; set; }
         public double Weight { get; set; }
         public double Volume { get; set; }

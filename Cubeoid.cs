@@ -4,9 +4,9 @@ using System.Text;
 
 namespace HomeExamLibrary
 {
-    class Cubeoid : I3DStorageObject
+  public  class Cubeoid : I3DStorageObject
     {
-        public Cubeoid(double x, double y,double z,  double weight,double maxDimension, string description,bool isFragile) 
+        public Cubeoid(double x, double y,double z, double weight,double maxDimension, string description,bool isFragile) 
         {
             //formel SA = 2lh + 2wh + 2lw
             Area = 2*(x * y) + 2 *(z * y) + 2*(x * z);

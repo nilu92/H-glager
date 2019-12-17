@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HomeExamLibrary
 {
-    class Cube : I3DStorageObject
+   public class Cube : I3DStorageObject
     {
        public double x;
        public double z;

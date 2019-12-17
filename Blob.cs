@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HomeExamLibrary
 {
-    class Blob : I3DStorageObject
+    public class Blob : I3DStorageObject
     {
         public double x;
         public double z;
