@@ -17,8 +17,11 @@ namespace HomeExamLibrary
             locations = new List<WareHouseLocation>();
             for (int i = 0; i < 300; i++)
             {
-                WareHouseLocation whl = new WareHouseLocation(300, 150, 150, 150);
+                WareHouseLocation whl = new WareHouseLocation(150, 150, 150);
                 locations.Add(whl);
+                whl.FloorID = 1;
+                whl.FloorID = 2;
+                whl.FloorID = 3;
             }
            
             
