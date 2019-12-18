@@ -8,10 +8,19 @@ namespace HomeExamLibrary
     {
         
         List<WareHouseLocation> locations = new List<WareHouseLocation>();
+        private WareHouseLocation whl;
+
+
         public WareHouse() 
         {
             
             locations = new List<WareHouseLocation>();
+            for (int i = 0; i < 300; i++)
+            {
+                WareHouseLocation whl = new WareHouseLocation(300, 150, 150, 150);
+                locations.Add(whl);
+            }
+           
             
         }
 
