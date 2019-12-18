@@ -13,7 +13,15 @@ namespace HomeExamLibrary
         }
        
       //Kalla på den här när en 'Storage' skapas.  
-        public Storage CreateBox(string description,int storageSpot,double weight,double volume,double area,double maxDimension, bool isFragile, DateTime timeStored)
+        
+        public I3DStorageObject createCube(double side,double weight, string description, double maxDimension, bool isFragile) 
+        {
+            Cube cube = new Cube(side,weight,description,maxDimension,isFragile);
+            Storage.Add(cube);
+            return cube;
+        }
+        
+        public I3DStorageObject CreateBox(string description,int storageSpot,double weight,double volume,double area,double maxDimension, bool isFragile, DateTime timeStored)
         {
             Storage storage = new Storage(description,storageSpot,weight,volume,area,maxDimension,isFragile,timeStored);
             Storage.Add(storage);
@@ -22,12 +30,12 @@ namespace HomeExamLibrary
             // Kunna lagra lådor på angiven plats
             return storage;
         }
-        
+       /* 
         public void RemoveBox(Storage storage) 
         {
             Storage.Remove(storage);
         }
-        public Storage SearchForBox(string description) 
+        public I3DStorageObject SearchForBox(string description) 
         {
             foreach (Storage storage in Storage)
             {
@@ -77,5 +85,6 @@ namespace HomeExamLibrary
 
             return true;
         }
+    */
     }
 }
