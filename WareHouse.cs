@@ -13,13 +13,14 @@ namespace HomeExamLibrary
             Storage = new List<I3DStorageObject>();
         }
        
-        public I3DStorageObject CreateBox(string Description)
+        public Storage CreateBox(string description,double weight,double volume,double area,double maxDimension, bool isFragile, DateTime timeStored)
         {
-            Storage storage = new I3DStorageObject();
-           //Cannot create an instance of the abstract class or interface 'I3DStorageObject'
+            Storage storage = new Storage(description,weight,volume,area,maxDimension,isFragile,timeStored);
+            Storage.Add(storage);
+            //Cannot create an instance of the abstract class or interface 'I3DStorageObject'
             // ska automatiskt lagra lådor
             // Kunna lagra lådor på angiven plats
-            return null;
+            return storage;
         }
         public void SearchForBox() 
         {
