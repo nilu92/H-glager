@@ -6,13 +6,13 @@ namespace HomeExamLibrary
 {
     public class WareHouse
     {
-
-        List<WareHouseLocation> a = new List<WareHouseLocation>();
+        
+        List<WareHouseLocation> locations = new List<WareHouseLocation>();
         public WareHouse() 
         {
-
-            a = new List<WareHouseLocation>();
-
+            
+            locations = new List<WareHouseLocation>();
+            
         }
 
        /* List<WareHouseLocation>[] a = new List<WareHouseLocation>[]

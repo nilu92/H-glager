@@ -6,17 +6,18 @@ namespace HomeExamLibrary
 {
     public class WareHouseLocation
     {
-
+        public int FloorID { get; set; }
         public List<I3DStorageObject> storage;
        
         public double MaxVolume;
         public double MaxWeight;
 
-        public WareHouseLocation(double height, double width, double depth)
+        public WareHouseLocation(int floorID, double height, double width, double depth)
         {
             MaxVolume = height * width * depth;
             MaxWeight = 1000;
-            storage = new List<I3DStorageObject>();
+            FloorID = floorID;
+           
         }
 
 
