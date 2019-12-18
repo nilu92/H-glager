@@ -7,28 +7,38 @@ namespace HomeExamLibrary
     public class WareHouse
     {
         public List<I3DStorageObject> Storage { get; }
-        public WareHouse()
-        {
-            List<WareHouseLocation>[] a = new List<WareHouseLocation>[]
+
+        List<WareHouseLocation>[] a = new List<WareHouseLocation>[]
              {
                 new List<WareHouseLocation>(100),
                 new List<WareHouseLocation>(100),
                 new List<WareHouseLocation>(100),
              };
-        }
-       
-      //Kalla på den här när en 'Storage' skapas.  
-        
-        public I3DStorageObject createCube(double side,double weight, string description, double maxDimension, bool isFragile) 
+        //Kalla på den här när en 'Storage' skapas.  
+
+        public I3DStorageObject CreateCube(double side,double weight, string description, double maxDimension, bool isFragile) 
         {
             Cube cube = new Cube(side,weight,description,maxDimension,isFragile);
             Storage.Add(cube);
             return cube;
         }
         
-        public I3DStorageObject createCubeoid() 
+        public I3DStorageObject CreateCubeoid(double x, double y, double z, double weight,double maxDimension, string description,bool isFragile) 
         {
-            Cubeoid cubeoid = new Cubeoid();
+            Cubeoid cubeoid = new Cubeoid(x,y,z,weight,maxDimension,description,isFragile);
+            return cubeoid;
+        }
+       
+        public I3DStorageObject CreateSphere(double radius, double weight,string description,double maxDimension,bool isFragile) 
+        {
+            Sphere sphere = new Sphere(radius,weight,description,maxDimension,isFragile);
+            return sphere;
+        }
+
+        public I3DStorageObject CreateBlob(double side, double weight, string description, double maxDimension,bool isFragile) 
+        {
+            Blob blob = new Blob(side,weight,description,maxDimension,isFragile);
+            return blob;
         }
         public I3DStorageObject CreateBox(string description,int storageSpot,double weight,double volume,double area,double maxDimension, bool isFragile, DateTime timeStored)
         {

@@ -4,16 +4,11 @@ using System.Text;
 
 namespace HomeExamLibrary
 {
-    public class WareHouseLocation : WareHouse
+    public class WareHouseLocation
     {
 
-        List<WareHouseLocation>[] locations = new List<WareHouseLocation>[]
-        {
-            new List<WareHouseLocation>(100),
-            new List<WareHouseLocation>(100),
-            new List<WareHouseLocation>(100),
-        };    
-
+        public List<I3DStorageObject> storage;
+       
         public double MaxVolume;
         public double MaxWeight;
 
@@ -21,7 +16,7 @@ namespace HomeExamLibrary
         {
             MaxVolume = height * width * depth;
             MaxWeight = 1000;
-
+            storage = new List<I3DStorageObject>();
         }
 
 
