@@ -15,16 +15,27 @@ namespace HomeExamLibrary
         {
             
             locations = new List<WareHouseLocation>();
-            for (int i = 0; i < 300; i++)
+            for (int i = 0; i < 100; i++)
             {
                 WareHouseLocation whl = new WareHouseLocation(150, 150, 150);
                 locations.Add(whl);
                 whl.FloorID = 1;
-                whl.FloorID = 2;
-                whl.FloorID = 3;
+               
             }
-           
-            
+
+            for (int i = 0; i < 100; i++)
+            {
+                WareHouseLocation whl = new WareHouseLocation(150, 150, 150);
+                locations.Add(whl);
+                whl.FloorID = 2;
+
+            }
+            for (int i = 0; i < 100; i++)
+            {
+                WareHouseLocation whl = new WareHouseLocation(150, 150, 150);
+                locations.Add(whl);
+                 whl.FloorID = 3;
+            }
         }
 
        /* List<WareHouseLocation>[] a = new List<WareHouseLocation>[]
