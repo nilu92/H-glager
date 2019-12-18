@@ -6,22 +6,30 @@ namespace HomeExamLibrary
 {
     public class WareHouse
     {
-        
 
-        List<WareHouseLocation>[] a = new List<WareHouseLocation>[]
+        List<WareHouseLocation> a = new List<WareHouseLocation>();
+        public WareHouse() 
+        {
+
+            a = new List<WareHouseLocation>();
+
+        }
+
+       /* List<WareHouseLocation>[] a = new List<WareHouseLocation>[]
              {
                 new List<WareHouseLocation>(100),
                 new List<WareHouseLocation>(100),
                 new List<WareHouseLocation>(100),
 
-                
+               
              };
-
+             */
         private int iDCounter;   
         public I3DStorageObject CreateCube(int iD,double side,double weight, string description, double maxDimension, bool isFragile) 
         {
             Cube cube = new Cube(iD,side,weight,description,maxDimension,isFragile);
             cube.ID = iDCounter++;
+            
             return cube;
         }
         
@@ -36,6 +44,7 @@ namespace HomeExamLibrary
         {
             Sphere sphere = new Sphere(iD,radius,weight,description,maxDimension,isFragile);
             sphere.ID = iDCounter++;
+            
             return sphere;
         }
 
@@ -46,6 +55,7 @@ namespace HomeExamLibrary
             return blob;
         }
         
+
        /* 
         public void RemoveBox(Storage storage) 
         {
