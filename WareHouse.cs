@@ -16,29 +16,33 @@ namespace HomeExamLibrary
 
                 
              };
-       
-            
+
+        private int iDCounter;   
         public I3DStorageObject CreateCube(int iD,double side,double weight, string description, double maxDimension, bool isFragile) 
         {
             Cube cube = new Cube(iD,side,weight,description,maxDimension,isFragile);
+            cube.ID = iDCounter;
             return cube;
         }
         
         public I3DStorageObject CreateCubeoid(int iD, double x, double y, double z, double weight,double maxDimension, string description,bool isFragile) 
         {
             Cubeoid cubeoid = new Cubeoid(iD,x,y,z,weight,maxDimension,description,isFragile);
+            cubeoid.ID = iDCounter;
             return cubeoid;
         }
        
         public I3DStorageObject CreateSphere(int iD, double radius, double weight,string description,double maxDimension,bool isFragile) 
         {
             Sphere sphere = new Sphere(iD,radius,weight,description,maxDimension,isFragile);
+            sphere.ID = iDCounter;
             return sphere;
         }
 
         public I3DStorageObject CreateBlob(int iD, double side, double weight, string description, double maxDimension) 
         {
             Blob blob = new Blob(iD,side,weight,description,maxDimension);
+            blob.ID = iDCounter;
             return blob;
         }
         
