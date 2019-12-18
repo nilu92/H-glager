@@ -9,7 +9,12 @@ namespace HomeExamLibrary
         public List<I3DStorageObject> Storage { get; }
         public WareHouse()
         {
-            Storage = new List<I3DStorageObject>();
+            List<WareHouseLocation>[] a = new List<WareHouseLocation>[]
+             {
+                new List<WareHouseLocation>(100),
+                new List<WareHouseLocation>(100),
+                new List<WareHouseLocation>(100),
+             };
         }
        
       //Kalla på den här när en 'Storage' skapas.  
@@ -21,6 +26,10 @@ namespace HomeExamLibrary
             return cube;
         }
         
+        public I3DStorageObject createCubeoid() 
+        {
+            Cubeoid cubeoid = new Cubeoid();
+        }
         public I3DStorageObject CreateBox(string description,int storageSpot,double weight,double volume,double area,double maxDimension, bool isFragile, DateTime timeStored)
         {
             Storage storage = new Storage(description,storageSpot,weight,volume,area,maxDimension,isFragile,timeStored);
