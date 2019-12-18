@@ -6,7 +6,7 @@ namespace HomeExamLibrary
 {
     public class WareHouse
     {
-        public List<I3DStorageObject> Storage { get; }
+        
 
         List<WareHouseLocation>[] a = new List<WareHouseLocation>[]
              {
@@ -14,12 +14,11 @@ namespace HomeExamLibrary
                 new List<WareHouseLocation>(100),
                 new List<WareHouseLocation>(100),
              };
-        //Kalla på den här när en 'Storage' skapas.  
+       
 
         public I3DStorageObject CreateCube(double side,double weight, string description, double maxDimension, bool isFragile) 
         {
             Cube cube = new Cube(side,weight,description,maxDimension,isFragile);
-            Storage.Add(cube);
             return cube;
         }
         
@@ -35,20 +34,12 @@ namespace HomeExamLibrary
             return sphere;
         }
 
-        public I3DStorageObject CreateBlob(double side, double weight, string description, double maxDimension,bool isFragile) 
+        public I3DStorageObject CreateBlob(double side, double weight, string description, double maxDimension) 
         {
-            Blob blob = new Blob(side,weight,description,maxDimension,isFragile);
+            Blob blob = new Blob(side,weight,description,maxDimension);
             return blob;
         }
-        public I3DStorageObject CreateBox(string description,int storageSpot,double weight,double volume,double area,double maxDimension, bool isFragile, DateTime timeStored)
-        {
-            Storage storage = new Storage(description,storageSpot,weight,volume,area,maxDimension,isFragile,timeStored);
-            Storage.Add(storage);
-            //Cannot create an instance of the abstract class or interface 'I3DStorageObject'
-            // ska automatiskt lagra lådor
-            // Kunna lagra lådor på angiven plats
-            return storage;
-        }
+        
        /* 
         public void RemoveBox(Storage storage) 
         {
