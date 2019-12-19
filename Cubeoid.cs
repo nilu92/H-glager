@@ -6,7 +6,9 @@ namespace HomeExamLibrary
 {
     public class Cubeoid : I3DStorageObject
     {
-        public Cubeoid(int spotID, int iD, double x, double y, double z, double weight, double maxDimension, string description, bool isFragile)
+        public int iD;
+        public int spotID;
+        public Cubeoid(double x, double y, double z, double weight, double maxDimension, string description, bool isFragile)
         {
             //formel SA = 2lh + 2wh + 2lw
             Area = 2 * (x * y) + 2 * (z * y) + 2 * (x * z);

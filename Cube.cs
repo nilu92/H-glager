@@ -10,8 +10,11 @@ namespace HomeExamLibrary
        public double x;
        public double z;
        public double y;
+
+        public int iD;
+       
         //constructor
-        public Cube(int spotID, int iD,double side, double weight,string description,double maxDimension,bool isFragile) 
+        public Cube(double side, double weight,string description,double maxDimension,bool isFragile) 
         {
             x = y = z = side;
             Area = side * side * 6;
@@ -21,7 +24,7 @@ namespace HomeExamLibrary
             MaxDimension = maxDimension;
             IsFragile = isFragile;
             ID = iD;
-            SpotID = spotID;
+         
         }
         public string Description { get; set; }
         public double Weight { get; set; }
@@ -31,7 +34,7 @@ namespace HomeExamLibrary
         public bool IsFragile { get; set; }
 
         public int ID { get; set; }
-        public int SpotID { get; set; }
+       
         public void InsuranceValue()
         {
            

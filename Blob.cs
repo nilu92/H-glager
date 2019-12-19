@@ -9,7 +9,10 @@ namespace HomeExamLibrary
         public double x;
         public double z;
         public double y;
-        public Blob(int spotID, int iD ,double side, double weight, string description, double maxDimension)
+
+        public int iD;
+        public int spotID;
+        public Blob(double side, double weight, string description, double maxDimension)
         {
             x = y = z = side;
             Area = side * side * 6;

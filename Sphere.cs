@@ -6,8 +6,9 @@ namespace HomeExamLibrary
 {
     public class Sphere : I3DStorageObject
     {
-
-        public Sphere(int spotID,int iD,double radius, double weight, string description, double maxDimension, bool isFragile)
+        public int iD;
+  
+        public Sphere(double radius, double weight, string description, double maxDimension, bool isFragile)
         {
 
             Area = 4 / 3 * Math.PI * radius * radius * radius;
@@ -17,7 +18,7 @@ namespace HomeExamLibrary
             Description = description;
             IsFragile = isFragile;
             ID = iD;
-            SpotID = spotID;
+        
         }
 
 
