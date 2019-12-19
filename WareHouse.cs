@@ -8,6 +8,7 @@ namespace HomeExamLibrary
     {
         public WareHouse wareHouse;
         public List<WareHouseLocation> locations = new List<WareHouseLocation>();
+        
         private WareHouseLocation whl;
 
 
@@ -76,14 +77,14 @@ namespace HomeExamLibrary
 
         public bool AddStorageAuto(I3DStorageObject s)
         {
+            double currentVolume = 0;
+            
+            foreach( I3DStorageObject obj in  storage )
+            
+            
             foreach (WareHouseLocation wareHouselocation in locations)
             {
-                int i = 0;
-                if(wareHouselocation.storage == s) 
-                {
-                    i++;
-                   
-                }
+                
                
                 if (s.Volume >= wareHouselocation.MaxVolume)
                 {
