@@ -11,16 +11,16 @@ namespace HomeExamLibrary
         private WareHouseLocation whl;
 
 
-        public WareHouse() 
+        public WareHouse()
         {
-            
+
             locations = new List<WareHouseLocation>();
             for (int i = 0; i < 100; i++)
             {
                 WareHouseLocation whl = new WareHouseLocation(150, 150, 150);
                 locations.Add(whl);
                 whl.FloorID = 1;
-               
+
             }
 
             for (int i = 0; i < 100; i++)
@@ -34,56 +34,66 @@ namespace HomeExamLibrary
             {
                 WareHouseLocation whl = new WareHouseLocation(150, 150, 150);
                 locations.Add(whl);
-                 whl.FloorID = 3;
+                whl.FloorID = 3;
             }
+
         }
-
-       /* List<WareHouseLocation>[] a = new List<WareHouseLocation>[]
-             {
-                new List<WareHouseLocation>(100),
-                new List<WareHouseLocation>(100),
-                new List<WareHouseLocation>(100),
-
-               
-             };
-             */
+     
         private int iDCounter;   
-        public I3DStorageObject CreateCube(int iD,double side,double weight, string description, double maxDimension, bool isFragile) 
+        public I3DStorageObject CreateCube(int spotID,int iD,double side,double weight, string description, double maxDimension, bool isFragile) 
         {
-            Cube cube = new Cube(iD,side,weight,description,maxDimension,isFragile);
+            Cube cube = new Cube(spotID,iD,side,weight,description,maxDimension,isFragile);
             cube.ID = iDCounter++;
             
             return cube;
         }
         
-        public I3DStorageObject CreateCubeoid(int iD, double x, double y, double z, double weight,double maxDimension, string description,bool isFragile) 
+        public I3DStorageObject CreateCubeoid(int spotID , int iD, double x, double y, double z, double weight,double maxDimension, string description,bool isFragile) 
         {
-            Cubeoid cubeoid = new Cubeoid(iD,x,y,z,weight,maxDimension,description,isFragile);
+            Cubeoid cubeoid = new Cubeoid(spotID,iD,x,y,z,weight,maxDimension,description,isFragile);
             cubeoid.ID = iDCounter++;
             return cubeoid;
         }
        
-        public I3DStorageObject CreateSphere(int iD, double radius, double weight,string description,double maxDimension,bool isFragile) 
+        public I3DStorageObject CreateSphere(int spotID, int iD, double radius, double weight,string description,double maxDimension,bool isFragile) 
         {
-            Sphere sphere = new Sphere(iD,radius,weight,description,maxDimension,isFragile);
+            Sphere sphere = new Sphere(spotID,iD,radius,weight,description,maxDimension,isFragile);
             sphere.ID = iDCounter++;
             
             return sphere;
         }
 
-        public I3DStorageObject CreateBlob(int iD, double side, double weight, string description, double maxDimension) 
+        public I3DStorageObject CreateBlob(int spotID ,int iD, double side, double weight, string description, double maxDimension) 
         {
-            Blob blob = new Blob(iD,side,weight,description,maxDimension);
+            Blob blob = new Blob(spotID,iD,side,weight,description,maxDimension);
             blob.ID = iDCounter++;
+            
             return blob;
         }
         
-        public I3DStorageObject RegisterObject(int iD,bool isFragile,) 
-        {
         
-        }
 
-       /* 
+        public int CheckSpotID(int spotID) 
+        {
+            int i = 0;
+            foreach(WareHouseLocation location in locations)
+            {
+                if(location.FloorID == spotID) 
+                {
+                    i++; 
+                }
+
+                return i;
+            }
+            return spotID;
+        }
+        public void RemoveObject(WareHouseLocation box) 
+        {
+            locations.Remove(box);
+        }
+       
+        
+        /* 
         public void RemoveBox(Storage storage) 
         {
             Storage.Remove(storage);
