@@ -6,15 +6,15 @@ namespace HomeExamLibrary
 {
     public class WareHouse
     {
-        
-        List<WareHouseLocation> locations = new List<WareHouseLocation>();
+        public WareHouse wareHouse;
+        public List<WareHouseLocation> locations = new List<WareHouseLocation>();
         private WareHouseLocation whl;
 
 
         public WareHouse()
         {
 
-            locations = new List<WareHouseLocation>();
+          locations = new List<WareHouseLocation>();
             for (int i = 0; i < 100; i++)
             {
                 WareHouseLocation whl = new WareHouseLocation(150, 150, 150);
@@ -39,8 +39,11 @@ namespace HomeExamLibrary
 
         }
      
-        private int iDCounter;   
-        public I3DStorageObject CreateCube(int spotID,int iD,double side,double weight, string description, double maxDimension, bool isFragile) 
+        private int iDCounter;
+
+
+        Cube c1 = new Cube(5,10,"Kaffe",100,true);
+        public I3DStorageObject CreateCube(double side,double weight, string description, double maxDimension, bool isFragile) 
         {
             Cube cube = new Cube(side,weight,description,maxDimension,isFragile);
             cube.ID = iDCounter++;
@@ -55,7 +58,7 @@ namespace HomeExamLibrary
             return cubeoid;
         }
        
-        public I3DStorageObject CreateSphere(int spotID, int iD, double radius, double weight,string description,double maxDimension,bool isFragile) 
+        public I3DStorageObject CreateSphere(double radius, double weight,string description,double maxDimension,bool isFragile) 
         {
             Sphere sphere = new Sphere(radius,weight,description,maxDimension,isFragile);
             sphere.ID = iDCounter++;
@@ -70,8 +73,27 @@ namespace HomeExamLibrary
             
             return blob;
         }
-        
-        
+
+        public bool AddStorageAuto(I3DStorageObject s)
+        {
+            foreach (WareHouseLocation wareHouselocation in locations)
+            {
+                int i = 0;
+                if(wareHouselocation.storage == s) 
+                {
+                    i++;
+                   
+                }
+               
+                if (s.Volume >= wareHouselocation.MaxVolume)
+                {
+                    return true;
+                }
+              
+            }
+
+            return false;
+        }
 
         public int CheckSpotID(int spotID) 
         {

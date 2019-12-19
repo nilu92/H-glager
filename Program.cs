@@ -10,7 +10,7 @@ namespace HomeExam
     class Program
     {
         public Menu menu;
-        public WareHouse whareHouse = new WareHouse();
+        public WareHouse wareHouse;
         static void Main(string[] args)
         {
            
@@ -26,12 +26,16 @@ namespace HomeExam
         public Program() 
         {
             menu = new Menu();
-            
+            wareHouse = new WareHouse();
+
+            // Funkar ju ha bra som helst
+            wareHouse.CreateCube(100, 2323, "kaffe", 10000, true); 
+                
             
         }
-        
-        
-       
+
+
+
         public void Run()
         {
             menu.MainMenu();
