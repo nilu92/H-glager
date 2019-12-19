@@ -9,7 +9,7 @@ namespace HomeExamLibrary
         public double x;
         public double z;
         public double y;
-        public Blob(double side, double weight, string description, double maxDimension, bool isFragile)
+        public Blob(int spotID, int iD ,double side, double weight, string description, double maxDimension)
         {
             x = y = z = side;
             Area = side * side * 6;
@@ -17,8 +17,9 @@ namespace HomeExamLibrary
             Weight = weight;
             Description = description;
             MaxDimension = maxDimension;
-            IsFragile = isFragile;
-
+            IsFragile = true;
+            ID = iD;
+            SpotID = spotID;
 
         }
 
@@ -28,8 +29,8 @@ namespace HomeExamLibrary
         public double Area { get; set; }
         public double MaxDimension { get; set; }
         public bool IsFragile { get; set; }
-
-
+        public int ID { get; set; }
+        public int SpotID { get; set; }
         public void InsuranceValue()
         {
             throw new NotImplementedException();
