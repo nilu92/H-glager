@@ -23,13 +23,16 @@ namespace HomeExamLibrary
         public bool hasAvailableVolumeForObject(I3DStorageObject s)
         {
             double currentVolume = 0;
+            
 
             foreach (I3DStorageObject obj in storage)
             {
                 currentVolume += obj.Volume;
             }
+          
+            double available = MaxVolume - currentVolume;
+            
 
-            bool available = MaxVolume - currentVolume;
             if (s.Volume <= available)
             {
                 return true;
