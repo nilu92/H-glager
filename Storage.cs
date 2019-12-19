@@ -4,31 +4,31 @@ using System.Text;
 
 namespace HomeExamLibrary
 {
-    public class Sphere : I3DStorageObject
+   public class Storage : I3DStorageObject
     {
-
-        public Sphere(int spotID,int iD,double radius, double weight, string description, double maxDimension, bool isFragile)
+        public Storage(string description,int storageSpot,double weight, double volume, double area, double maxDimension, bool isFragile, DateTime timeStored) 
         {
-
-            Area = 4 / 3 * Math.PI * radius * radius * radius;
-            Volume = Math.PI * 4 * radius * radius;
-            Weight = weight;
-            MaxDimension = maxDimension;
+            
             Description = description;
+            Weight = weight;
+            Volume = volume;
+            Area = area;
+            MaxDimension = maxDimension;
             IsFragile = isFragile;
-            ID = iD;
-            SpotID = spotID;
+            TimeStored = timeStored;
+            StorageSpot = storageSpot;
         }
-
-
+        
+        public DateTime TimeStored { get; set; }
         public string Description { get; set; }
         public double Weight { get; set; }
         public double Volume { get; set; }
         public double Area { get; set; }
         public double MaxDimension { get; set; }
         public bool IsFragile { get; set; }
-        public int ID { get; set; }
-        public int SpotID { get; set; }
+
+        public int StorageSpot { get; set; }
+
         public void InsuranceValue()
         {
             throw new NotImplementedException();

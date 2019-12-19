@@ -9,9 +9,9 @@ namespace HomeExamLibrary
         double Volume { get; set; }
         double Area { get; set; }
         double MaxDimension { get; set; }
-
+         int ID { get; set; }
         bool IsFragile { get; set; }
-
+        int SpotID { get; set; }
         void InsuranceValue();
 
 

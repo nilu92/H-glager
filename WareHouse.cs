@@ -78,6 +78,10 @@ namespace HomeExamLibrary
             return blob;
         }
         
+        public I3DStorageObject RegisterObject(int iD,bool isFragile,) 
+        {
+        
+        }
 
        /* 
         public void RemoveBox(Storage storage) 
