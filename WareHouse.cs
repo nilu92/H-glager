@@ -42,30 +42,30 @@ namespace HomeExamLibrary
         private int iDCounter;   
         public I3DStorageObject CreateCube(int spotID,int iD,double side,double weight, string description, double maxDimension, bool isFragile) 
         {
-            Cube cube = new Cube(spotID,iD,side,weight,description,maxDimension,isFragile);
+            Cube cube = new Cube(side,weight,description,maxDimension,isFragile);
             cube.ID = iDCounter++;
             
             return cube;
         }
         
-        public I3DStorageObject CreateCubeoid(int spotID , int iD, double x, double y, double z, double weight,double maxDimension, string description,bool isFragile) 
+        public I3DStorageObject CreateCubeoid(double x, double y, double z, double weight,double maxDimension, string description,bool isFragile) 
         {
-            Cubeoid cubeoid = new Cubeoid(spotID,iD,x,y,z,weight,maxDimension,description,isFragile);
+            Cubeoid cubeoid = new Cubeoid(x,y,z,weight,maxDimension,description,isFragile);
             cubeoid.ID = iDCounter++;
             return cubeoid;
         }
        
         public I3DStorageObject CreateSphere(int spotID, int iD, double radius, double weight,string description,double maxDimension,bool isFragile) 
         {
-            Sphere sphere = new Sphere(spotID,iD,radius,weight,description,maxDimension,isFragile);
+            Sphere sphere = new Sphere(radius,weight,description,maxDimension,isFragile);
             sphere.ID = iDCounter++;
             
             return sphere;
         }
 
-        public I3DStorageObject CreateBlob(int spotID ,int iD, double side, double weight, string description, double maxDimension) 
+        public I3DStorageObject CreateBlob( double side, double weight, string description, double maxDimension) 
         {
-            Blob blob = new Blob(spotID,iD,side,weight,description,maxDimension);
+            Blob blob = new Blob(side,weight,description,maxDimension);
             blob.ID = iDCounter++;
             
             return blob;
