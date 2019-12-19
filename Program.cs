@@ -10,8 +10,10 @@ namespace HomeExam
     class Program
     {
         public Menu menu;
+        public WareHouse whareHouse = new WareHouse();
         static void Main(string[] args)
         {
+           
             /*Cube c1 = new Cube(5, 10, "111111", 100, true);
             Cubeoid Test = new Cubeoid(100, 50, 35, 150, 150, "hjg", true);
             
@@ -19,10 +21,13 @@ namespace HomeExam
             Console.WriteLine(" Cubeoid Area: {0} ,  Volume: {1}", Test.Area, Test.Volume);
             */
             new Program().Run();
+          
         }
         public Program() 
         {
             menu = new Menu();
+            
+            
         }
         
         
@@ -30,6 +35,7 @@ namespace HomeExam
         public void Run()
         {
             menu.MainMenu();
+            
         }
 
 
