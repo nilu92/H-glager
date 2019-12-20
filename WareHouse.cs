@@ -7,6 +7,7 @@ namespace HomeExamLibrary
     public class WareHouse
     {
         public WareHouse wareHouse;
+        public WareHouseLocation wareHouseLocation;
         public List<WareHouseLocation> locations = new List<WareHouseLocation>();
         
         private WareHouseLocation whl;
@@ -14,6 +15,7 @@ namespace HomeExamLibrary
 
         public WareHouse()
         {
+            
 
           locations = new List<WareHouseLocation>();
             for (int i = 0; i < 100; i++)
@@ -75,41 +77,54 @@ namespace HomeExamLibrary
             return blob;
         }
 
-        public bool AddStorageAuto(I3DStorageObject s)
+       
+        public bool AddStorageAuto(I3DStorageObject s) 
         {
-            double currentVolume = 0;
-            
-            foreach( I3DStorageObject obj in  storage )
-            
-            
-            foreach (WareHouseLocation wareHouselocation in locations)
+            foreach (WareHouseLocation wareHouselocation in locations) 
             {
-                
-               
-                if (s.Volume >= wareHouselocation.MaxVolume)
+                 bool available = wareHouselocation.hasAvailableVolumeForObject(s);
+                if (available)
                 {
+                    wareHouselocation.storage.Add(s);
                     return true;
                 }
-              
+                
             }
 
             return false;
         }
 
-        public int CheckSpotID(int spotID) 
+        public bool AddStorageManual(I3DStorageObject ChosenSpot) 
+        {
+            if(locations.Count == 0) 
+            {
+                return false;
+            }
+            foreach  (WareHouseLocation wareHouseLocation in locations)
+            {
+                int check = CheckLocation(ChosenSpot);
+                if(check == 0) 
+                {
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+
+        public int CheckLocation(I3DStorageObject storageSpot) 
         {
             int i = 0;
-            foreach(WareHouseLocation location in locations)
+            foreach (WareHouseLocation wareHouseLocation in locations)
             {
-                if(location.FloorID == spotID) 
+                if(wareHouseLocation.storage == storageSpot) 
                 {
-                    i++; 
+                    i++;
                 }
-
-                return i;
             }
-            return spotID;
+            return i;
         }
+
         public void RemoveObject(WareHouseLocation box) 
         {
             locations.Remove(box);
