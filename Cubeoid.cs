@@ -7,7 +7,7 @@ namespace HomeExamLibrary
     public class Cubeoid : I3DStorageObject
     {
         public int iD;
-        public int spotID;
+      
         public Cubeoid(double x, double y, double z, double weight, double maxDimension, string description, bool isFragile)
         {
             //formel SA = 2lh + 2wh + 2lw
@@ -18,7 +18,7 @@ namespace HomeExamLibrary
             Description = description;
             IsFragile = isFragile;
             ID = iD;
-            SpotID = spotID;
+            
 
         }
         public string Description { get; set; }
@@ -29,7 +29,7 @@ namespace HomeExamLibrary
         public bool IsFragile { get; set; }
 
         public int ID { get; set; }
-        public int SpotID { get; set; }
+       
         public void InsuranceValue()
         {
 

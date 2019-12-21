@@ -11,7 +11,7 @@ namespace HomeExamLibrary
         public double y;
 
         public int iD;
-        public int spotID;
+      
         public Blob(double side, double weight, string description, double maxDimension)
         {
             x = y = z = side;
@@ -22,7 +22,7 @@ namespace HomeExamLibrary
             MaxDimension = maxDimension;
             IsFragile = true;
             ID = iD;
-            SpotID = spotID;
+           
 
         }
 

@@ -127,17 +127,7 @@ namespace HomeExamLibrary
             return null;
         }        
                
-               
-                    
-                
-               
-            
-
-         
-        
-
-        
-        public void RemoveObject(I3DStorageObject s) 
+     public void RemoveObject(I3DStorageObject s) 
         {
             wareHouseLocation.storage.Remove(s);
         }
