@@ -7,18 +7,15 @@ namespace HomeExamLibrary
 {
     public class WareHouse
     {
-        public WareHouse wareHouse;
-        public WareHouseLocation wareHouseLocation;
-        public List<WareHouseLocation> locations = new List<WareHouseLocation>();
-        
-        public WareHouseLocation whl;
 
+        public List<WareHouseLocation> locations;
+        private int iDCounter;
 
         public WareHouse()
         {
             
-
-          locations = new List<WareHouseLocation>();
+            locations = new List<WareHouseLocation>();
+            
             for (int i = 0; i < 100; i++)
             {
                 WareHouseLocation whl = new WareHouseLocation(150, 150, 150);
@@ -43,11 +40,8 @@ namespace HomeExamLibrary
 
         }
      
-        private int iDCounter;
-
-
-        Cube c1 = new Cube(5,10,"Kaffe",100,true);
-        public I3DStorageObject CreateCube(double side,double weight, string description, double maxDimension, bool isFragile) 
+        
+         public I3DStorageObject CreateCube(double side,double weight, string description, double maxDimension, bool isFragile) 
         {
             Cube cube = new Cube(side,weight,description,maxDimension,isFragile);
             cube.ID = iDCounter++;
@@ -126,68 +120,5 @@ namespace HomeExamLibrary
             
             return null;
         }        
-               
-     public void RemoveObject(I3DStorageObject s) 
-        {
-            wareHouseLocation.storage.Remove(s);
-        }
-       
-        
-        /* 
-        public void RemoveBox(Storage storage) 
-        {
-            Storage.Remove(storage);
-        }
-        public I3DStorageObject SearchForBox(string description) 
-        {
-            foreach (Storage storage in Storage)
-            {
-                if(storage.Description == description) 
-                {
-                    return storage;
-                }
-            }
-            //söka efter lådor med hjälp av Description.
-            return null;
-        }
-    
-       
-        public void CheckIfMaxWeight(double weight ) 
-        {
-            
-        
-        }     
-    
-        public int CheckStorage(int storageSpot) 
-        {
-            int i = 0;
-            foreach (Storage storage in Storage)
-            {
-                if(storage.StorageSpot == storageSpot) 
-                {
-                    i++;
-                }
-            }
-            return i;
-        }
-        //
-        public bool CheckifStorageisEmpty(int storageSpot) 
-        {
-            if(Storage.Count == 0) 
-            {
-                return false;
-            }
-            foreach (Storage storage in Storage)
-            {
-                int check = CheckStorage(storageSpot);
-                if(check == 0) 
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-    */
     }
 }
