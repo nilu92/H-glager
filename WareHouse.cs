@@ -121,7 +121,7 @@ namespace HomeExamLibrary
             return null;
         }
 
-        public bool Remove(I3DStorageObject s, int id)
+        public bool Remove(int id)
         {
             foreach (WareHouseLocation whl in locations)
             {
@@ -130,7 +130,7 @@ namespace HomeExamLibrary
 
                     if (obj.ID == id)
                     {
-                        whl.storage.Remove(s);
+                        whl.storage.Remove(obj);
                         return true;
                         
                     }
@@ -139,6 +139,21 @@ namespace HomeExamLibrary
 
             return false;
         }
+        public bool Move(int id, int spot) 
+        {
+            foreach (WareHouseLocation wareHouseLocation in locations)
+            {
+                I3DStorageObject box = Search(id);
+                bool didRemove = Remove(id);
+                if (didRemove) 
+                {
+                    bool didPlace = AddStorageManual(box, spot);
+                     return didPlace;
+                }
+            }
 
+            return false;
+            
+        }
     }
 }
