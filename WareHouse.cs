@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace HomeExamLibrary
 {
@@ -94,40 +95,37 @@ namespace HomeExamLibrary
             return false;
         }
 
-        public bool AddStorageManual(I3DStorageObject ChosenSpot) 
+        public bool AddStorageManual(I3DStorageObject s, int spot)
         {
-            if(locations.Count == 0) 
+
+            // find warehouselocation by position in list
+
+            WareHouseLocation wareHouseLocation = locations[spot];
+            bool available = wareHouseLocation.hasAvailableVolumeForObject(s);
+            if (available) 
             {
-                return false;
+                wareHouseLocation.storage.Add(s);
+                return true;
             }
-            foreach  (WareHouseLocation wareHouseLocation in locations)
-            {
-                int check = CheckLocation(ChosenSpot);
-                if(check == 0) 
-                {
-                    return false;
-                }
-            }
+
+            return false;
+        }       
+                  
+                
+               
+               
+                    
+                
+               
             
-            return true;
-        }
 
-        public int CheckLocation(I3DStorageObject storageSpot) 
-        {
-            int i = 0;
-            foreach (WareHouseLocation wareHouseLocation in locations)
-            {
-                if(wareHouseLocation.storage == storageSpot) 
-                {
-                    i++;
-                }
-            }
-            return i;
-        }
+         
+        
 
-        public void RemoveObject(WareHouseLocation box) 
+        
+        public void RemoveObject(I3DStorageObject s) 
         {
-            locations.Remove(box);
+            wareHouseLocation.storage.Remove(s);
         }
        
         
