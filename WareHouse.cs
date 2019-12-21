@@ -11,7 +11,7 @@ namespace HomeExamLibrary
         public WareHouseLocation wareHouseLocation;
         public List<WareHouseLocation> locations = new List<WareHouseLocation>();
         
-        private WareHouseLocation whl;
+        public WareHouseLocation whl;
 
 
         public WareHouse()
@@ -111,7 +111,21 @@ namespace HomeExamLibrary
             return false;
         }       
                   
-                
+        public I3DStorageObject Search(int id) 
+        {
+            foreach (WareHouseLocation whl in locations)
+            {
+                foreach (I3DStorageObject obj in whl.storage )
+                {
+                    if (obj.ID == id)
+                    {
+                        return obj;
+                    }
+                }
+            }
+            
+            return null;
+        }        
                
                
                     
