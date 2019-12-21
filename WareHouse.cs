@@ -121,7 +121,7 @@ namespace HomeExamLibrary
             return null;
         }
 
-        public I3DStorageObject Remove(I3DStorageObject s, int id)
+        public bool Remove(I3DStorageObject s, int id)
         {
             foreach (WareHouseLocation whl in locations)
             {
@@ -131,14 +131,13 @@ namespace HomeExamLibrary
                     if (obj.ID == id)
                     {
                         whl.storage.Remove(s);
-                        break;
+                        return true;
+                        
                     }
-
-
                 }
             }
 
-            return null;
+            return false;
         }
 
     }
