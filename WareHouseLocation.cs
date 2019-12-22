@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HomeExamLibrary
 {
-    public class WareHouseLocation
+    public class WareHouseLocation : ICloneable
     {
         public int FloorID { get; set; }
         public List<I3DStorageObject> storage = new List<I3DStorageObject>();
@@ -19,18 +19,20 @@ namespace HomeExamLibrary
             MaxWeight = 1000;
         }
 
-        public bool AddStorageAuto(I3DStorageObject s) 
+        public bool AddtoLocation(I3DStorageObject s) 
         {
             foreach (I3DStorageObject i3DStorageObject in storage)
             {
-                bool available = hasAvailableVolumeForObject(s);
-                if (available) 
+                bool avaialable = hasAvailableVolumeForObject(s);
+                if(avaialable) 
                 {
                     storage.Add(s);
+                    return true;
                 }
             }
             return false;
         }
+       
         public bool hasAvailableVolumeForObject(I3DStorageObject s)
         {
             double currentVolume = 0;
@@ -54,8 +56,10 @@ namespace HomeExamLibrary
             }
         
         }
-    
-        
-    
+
+        public object Clone()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

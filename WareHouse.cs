@@ -12,7 +12,7 @@ namespace HomeExamLibrary
         public List<WareHouseLocation> locations;
          
         private int iDCounter;
-        WareHouse wareHouse = new WareHouse();
+        //WareHouse wareHouse = new WareHouse();
         public WareHouse()
         {
             
@@ -82,8 +82,8 @@ namespace HomeExamLibrary
                 bool available = wareHouselocation.hasAvailableVolumeForObject(s);
                 if (available)
                 {
-                    wareHouselocation.AddStorageAuto(s);
-                    wareHouselocation.storage.Add(s);
+                    wareHouselocation.AddtoLocation(s);
+                  //  wareHouselocation.storage.Add(s);
                     return true;
                 }
 
@@ -155,7 +155,7 @@ namespace HomeExamLibrary
             return false;
         }
 
-        public WareHouseLocation DeepCopy() 
+        /*public WareHouseLocation DeepCopy() 
         {
             foreach (WareHouseLocation  wareHouseLocation in locations)
             {
@@ -176,7 +176,7 @@ namespace HomeExamLibrary
 
             return null;
         }
-    
+    */
        
     }
 
