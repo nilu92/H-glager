@@ -80,16 +80,13 @@ namespace HomeExamLibrary
             }
         
         }
-        public WareHouseLocation ListOfLocations(WareHouseLocation whl)
+        public List<I3DStorageObject> GetStorage()
         {
-            foreach (WareHouseLocation wareHouse in storage)
-            {
-                storage.OrderBy(wareHouseLocation => wareHouseLocation.ID);
-                return wareHouse;
-            }
-            return whl;
+            return storage;
         }
-        public object Clone()
+
+
+            public object Clone()
         {
             var copy = (WareHouseLocation)MemberwiseClone();
             copy.storage = storage.Select(item => (I3DStorageObject)item.Clone()).ToList();
