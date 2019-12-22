@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 
+
 namespace HomeExamLibrary
 {
     public class WareHouse
     {
 
         public List<WareHouseLocation> locations;
+         
         private int iDCounter;
-
+        WareHouse wareHouse = new WareHouse();
         public WareHouse()
         {
-
+            
             locations = new List<WareHouseLocation>();
-
+            
             for (int i = 0; i < 100; i++)
             {
                 WareHouseLocation whl = new WareHouseLocation(150, 150, 150);
@@ -40,7 +42,7 @@ namespace HomeExamLibrary
 
         }
 
-
+       
         public I3DStorageObject CreateCube(double side, double weight, string description, double maxDimension, bool isFragile)
         {
             Cube cube = new Cube(side, weight, description, maxDimension, isFragile);
@@ -80,6 +82,7 @@ namespace HomeExamLibrary
                 bool available = wareHouselocation.hasAvailableVolumeForObject(s);
                 if (available)
                 {
+                    wareHouselocation.AddStorageAuto(s);
                     wareHouselocation.storage.Add(s);
                     return true;
                 }
@@ -91,9 +94,6 @@ namespace HomeExamLibrary
 
         public bool AddStorageManual(I3DStorageObject s, int spot)
         {
-
-            // find warehouselocation by position in list
-
             WareHouseLocation wareHouseLocation = locations[spot];
             bool available = wareHouseLocation.hasAvailableVolumeForObject(s);
             if (available)
@@ -153,7 +153,34 @@ namespace HomeExamLibrary
             }
 
             return false;
-            
         }
+
+        public WareHouseLocation DeepCopy() 
+        {
+            foreach (WareHouseLocation  wareHouseLocation in locations)
+            {
+                if(wareHouseLocation == null) 
+                {
+                    return null;
+                }
+                else 
+                {
+
+            
+                    
+                
+                }
+              
+            }
+
+
+            return null;
+        }
+    
+       
     }
+
+
+   
+
 }

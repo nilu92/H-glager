@@ -19,7 +19,18 @@ namespace HomeExamLibrary
             MaxWeight = 1000;
         }
 
-
+        public bool AddStorageAuto(I3DStorageObject s) 
+        {
+            foreach (I3DStorageObject i3DStorageObject in storage)
+            {
+                bool available = hasAvailableVolumeForObject(s);
+                if (available) 
+                {
+                    storage.Add(s);
+                }
+            }
+            return false;
+        }
         public bool hasAvailableVolumeForObject(I3DStorageObject s)
         {
             double currentVolume = 0;
@@ -41,6 +52,10 @@ namespace HomeExamLibrary
             {
                 return false;
             }
+        
         }
+    
+        
+    
     }
 }
