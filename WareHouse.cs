@@ -111,12 +111,13 @@ namespace HomeExamLibrary
             {
                 foreach (I3DStorageObject obj in whl.storage)
                  {
-                     
-                    if (obj.ID == id)
+
+                    whl.Search(id);
+                   /* if (obj.ID == id)
                     {
                         return obj;
                     }
-                    
+                 */   
                 }
 
             }
