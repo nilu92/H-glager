@@ -2,7 +2,7 @@
 
 namespace HomeExamLibrary
 {
-    public interface I3DStorageObject
+    public interface I3DStorageObject : ICloneable
     {
         string Description { get; set; }
         double Weight { get; set; }

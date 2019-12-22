@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace HomeExamLibrary
 {
@@ -59,7 +60,10 @@ namespace HomeExamLibrary
 
         public object Clone()
         {
-            throw new NotImplementedException();
+            var copy = (WareHouseLocation)MemberwiseClone();
+            copy.storage = storage.Select(item => (I3DStorageObject)item.Clone()).ToList();
+
+            return copy;
         }
     }
 }

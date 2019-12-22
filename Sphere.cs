@@ -30,6 +30,11 @@ namespace HomeExamLibrary
         public bool IsFragile { get; set; }
         public int ID { get; set; }
         public int SpotID { get; set; }
+
+        public object Clone()
+        {
+            throw new NotImplementedException();
+        }
         public void InsuranceValue()
         {
             throw new NotImplementedException();

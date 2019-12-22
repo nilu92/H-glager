@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace HomeExamLibrary
 {
-    public class WareHouse
+    public class WareHouse : ICloneable
     {
 
         public List<WareHouseLocation> locations;
@@ -155,6 +155,11 @@ namespace HomeExamLibrary
             return false;
         }
 
+        public object Clone()
+        {
+            throw new NotImplementedException();
+        }
+
         /*public WareHouseLocation DeepCopy() 
         {
             foreach (WareHouseLocation  wareHouseLocation in locations)
@@ -177,7 +182,7 @@ namespace HomeExamLibrary
             return null;
         }
     */
-       
+
     }
 
 
