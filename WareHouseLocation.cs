@@ -56,14 +56,7 @@ namespace HomeExamLibrary
             return null;
         }
 
-        public void ListOfLocations() 
-        {
-            foreach (WareHouseLocation wareHouse in storage)
-            {
-                storage.OrderBy(wareHouseLocation => wareHouseLocation.ID);
-            }
-        
-        }
+       
         public bool hasAvailableVolumeForObject(I3DStorageObject s)
         {
             double currentVolume = 0;
@@ -87,7 +80,15 @@ namespace HomeExamLibrary
             }
         
         }
-
+        public WareHouseLocation ListOfLocations(WareHouseLocation whl)
+        {
+            foreach (WareHouseLocation wareHouse in storage)
+            {
+                storage.OrderBy(wareHouseLocation => wareHouseLocation.ID);
+                return wareHouse;
+            }
+            return whl;
+        }
         public object Clone()
         {
             var copy = (WareHouseLocation)MemberwiseClone();

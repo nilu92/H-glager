@@ -144,22 +144,15 @@ namespace HomeExamLibrary
 
             return false;
         }
+
+        
         public void CreateClone(WareHouseLocation whl) 
         {
             whl.Clone();
-            
         }
         public object Clone()
         {
-            
             throw new NotImplementedException();
         }
-
-       
-
-    }
-
-
-   
-
+     }
 }
