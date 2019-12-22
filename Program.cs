@@ -7,6 +7,8 @@ using HomeExamLibrary;
 
 namespace HomeExam
 {
+    
+    
     class Program
     {
         public Menu menu;
@@ -40,30 +42,41 @@ namespace HomeExam
 
         public void Run()
         {
-            //Test
+            //Test cube
             double Side = 50;
             double weight = 50;
             string description = "kaffe";
             double MaxDimension = 500;
             bool isFragile = true;
 
-
-
-
-           
+            //Test Cubeoid
+            double x = 5;
+            double y = 5;
+            double z = 5;
+          
+            int ID = 1;
             var box = wareHouse.CreateCube(Side, weight, description, MaxDimension, isFragile);
             var spot = 5;
             wareHouse.AddStorageManual(box,spot);
             bool didPlace = wareHouse.AddStorageManual(box, spot);
             Console.WriteLine(didPlace);
             Console.WriteLine(box.Weight);
-            box = wareHouse.Search(1);
+            box = wareHouse.Search(ID);
             bool didFind = box.ID == 1;
-            Console.WriteLine(didFind);
-            wareHouse.Remove(box,1);
-            bool didRemove = box.ID == 1;
+            Console.WriteLine("{0},{1}",didFind,spot);
+
+            var cubeoid = wareHouse.CreateCubeoid(x, y, z, weight, MaxDimension, description, isFragile);
+            wareHouse.AddStorageAuto(cubeoid);
+            Console.ReadLine();
+            wareHouse.Remove(cubeoid,ID);
+            Console.ReadLine();
+            bool didRemove = wareHouse.Remove(cubeoid, ID);
             Console.WriteLine(didRemove);
             
+          
+
+
+
              
 
             

@@ -27,8 +27,12 @@ namespace HomeExam
             int selection;
             do
             {
-                Console.WriteLine("**********MENU***********");
-                selection = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("**********MENU***********\n" + "[1]AddBox\n" + "[2]SearchBox\n" + "[3]RemoveBox\n" + "[4]MoveBox");
+                while (!int.TryParse(Console.ReadLine(), out selection))
+                {
+                    Console.Clear();
+                    MainMenu();
+                }
                 switch (selection)
                 {
                     case 1:
@@ -44,6 +48,7 @@ namespace HomeExam
                         break;
 
                     default:
+                        MainMenu();
                         break;
                 }
 
@@ -60,10 +65,16 @@ namespace HomeExam
             int selection;
             do
             {
-                
+
                 Console.WriteLine("Enter type of shape\n" + "[1]{Cube}\n" + "[2]{Cubeoid}\n" + "[3]{Sphere}\n" + "[4]{Blob}");
 
-                selection = Convert.ToInt32(Console.ReadLine());
+
+                while (!int.TryParse(Console.ReadLine(), out selection))
+                {
+                    Console.WriteLine("Wrong input!");
+                    Console.Clear();
+                    AddBox();
+                }
                 switch (selection)
                 {
                     case 1:
@@ -88,15 +99,10 @@ namespace HomeExam
 
 
             } while (selection < 5);
-        
+
         }
 
-        public void SearchBox()
-        {
-            Console.WriteLine("Funkar!");
-            Console.ReadLine();
-            MainMenu();
-        }
+
 
         public void RemoveBox()
         {
@@ -105,8 +111,13 @@ namespace HomeExam
             MainMenu();
         }
 
-    
-        public void CreateCube() 
+        public void Move()
+        {
+
+
+        }
+
+        public void CreateCube()
         {
             //Create cube
             var maxDimension = 1000;
@@ -116,7 +127,7 @@ namespace HomeExam
             {
                 Console.WriteLine("Invalid input!");
             }
-            
+
             Console.WriteLine("enter the weight");
             double weight;
             while (!double.TryParse(Console.ReadLine(), out weight))
@@ -146,23 +157,26 @@ namespace HomeExam
             }
 
             var cube = wareHouse.CreateCube(side, weight, description, maxDimension, isFragile);
+
+            wareHouse.AddStorageAuto(cube);
             var area = cube.Area;
             var Volume = cube.Volume;
-            Console.WriteLine("Side: {0}cm , Weight {1}Kg , Your Description: {2}, IsContent Fragile:{3}\n"+ " The Area of your cube is: {4}cm^2\n"+"The volume of your cube is: {5}cm^3", side, weight, description, isFragile,area,Volume);
+            var ID = cube.ID;
+            ID++;
+            Console.WriteLine("Side: {0}cm , Weight {1}Kg , Your Description: {2}, IsContent Fragile:{3}, ID:{6}\n" + " The Area of your cube is: {4}cm^2\n" + "The volume of your cube is: {5}cm^3", side, weight, description, isFragile, area, Volume, ID);
             Console.ReadLine();
-            wareHouse.AddStorageAuto(cube);
-            Console.ReadLine();
+
             MainMenu();
 
         }
         public void CreateCubeoid()
         {
-            
+
             //Cubeoid cubeoid = new Cubeoid(1, 2, 3, 4, 100, "", true);
             var maxDimension = 1000;
             Console.WriteLine(" Enter length");
             double x;
-            while(!double.TryParse(Console.ReadLine(),out x)) 
+            while (!double.TryParse(Console.ReadLine(), out x))
             {
                 Console.WriteLine("Invalid input!");
             }
@@ -207,11 +221,35 @@ namespace HomeExam
                     isFragile = false;
                 }
             }
-            var cubeoid = wareHouse.CreateCubeoid(x,y,z,weight,maxDimension,description,isFragile);
+
+            int id;
+            Console.WriteLine("Enter an  Search ID");
+            while (!int.TryParse(Console.ReadLine(), out id))
+            {
+                Console.WriteLine("Invalid input!");
+            }
+            var cubeoid = wareHouse.CreateCubeoid(x, y, z, weight, maxDimension, description, isFragile);
+            wareHouse.AddStorageAuto(cubeoid);
+            bool didPlace = wareHouse.AddStorageAuto(cubeoid);
+            Console.WriteLine(didPlace);
+           
             var area = cubeoid.Area;
             var volume = cubeoid.Volume;
-            Console.WriteLine("Lenght:{0}cm, Height{1}, Depths{2},Weight{3}, Description :{4},IsFragile:{5}\n"+"Total area: {6}cm\n" + "Total Volume: {7}cm^3",x,y,z,weight,description,isFragile,area,volume);
-            wareHouse.AddStorageAuto(cubeoid);
+            Console.WriteLine("Lenght:{0}cm, Height{1}, Depths{2},Weight{3}, Description :{4},IsFragile:{5}\n" + "Total area: {6}cm\n" + "Total Volume: {7}cm^3, ID:{8}", x, y, z, weight, description, isFragile, area, volume, id);
+            wareHouse.Search(id);
+            if (wareHouse == null)
+            {
+                Console.WriteLine("Does not work!");
+
+            }
+            else
+            {
+                Console.WriteLine("{0}", cubeoid.Description);
+            }
+
+
+
+
             Console.ReadLine();
             MainMenu();
 
@@ -257,12 +295,16 @@ namespace HomeExam
             var sphere = wareHouse.CreateSphere(radius, weight, description, maxDimension, isFragile);
             var area = sphere.Area;
             var volume = sphere.Volume;
-            Console.WriteLine("Radius: {0}cm , Weight: {1}kg,Description: {2},IsFragile: {3}\n"+"Total Area: {4}\n"+"Total Volume: {5}",radius,weight,description,isFragile,area,volume);
+            var id = sphere.ID;
+            id++;
+            Console.WriteLine("Radius: {0}cm , Weight: {1}kg,Description: {2},IsFragile: {3}\n" + "Total Area: {4}\n" + "Total Volume: {5}", radius, weight, description, isFragile, area, volume);
             wareHouse.AddStorageAuto(sphere);
+            MainMenu();
         }
         public void CreateBlob()
         {
             var maxDimension = 1000;
+            
             Console.WriteLine("Enter side:");
             double side;
             while (!double.TryParse(Console.ReadLine(), out side))
@@ -282,25 +324,31 @@ namespace HomeExam
                 Console.WriteLine("Description to long try again...");
                 description = Console.ReadLine();
             }
-            Console.WriteLine("Is content Fragile?\n" + "[1]Yes\n" + "[2]No");
-            string answer = Console.ReadLine();
-            bool isFragile = true;
-            //bool isFragile = Convert.ToBoolean(answer);
-            if (answer == "1" || answer == "Yes" || answer == "yes" || answer == "y" || answer == "Y")
+            Console.WriteLine("Enter an  Search ID");
+            int ID;
+            while (!int.TryParse(Console.ReadLine(), out ID))
             {
-                isFragile = true;
+                Console.WriteLine("Invalid input!");
             }
-            else
-            {
-                if (answer == "2" || answer == "No" || answer == "no" || answer == "n" || answer == "N")
-                {
-                    isFragile = false;
-                }
-            }
+            
+            var blob = wareHouse.CreateBlob(side, weight, description, maxDimension);
+            var area = blob.Area;
+            var volume = blob.Volume;
+           
+             wareHouse.AddStorageAuto(blob);
+            Console.WriteLine(" Search ID: {5} ,Side:{0}cm,Weight:{1}kg,Description: {2}\n" + "Total Area: {3}cm\n" + "Total volume: {4}cm^", side, weight, description, area, volume, ID);
+            Console.ReadLine();
+            MainMenu();
+
 
         }
 
+        public void SearchBox()
+        {
+           
+           
 
+         }
 
     }
 
