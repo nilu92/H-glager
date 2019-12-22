@@ -34,11 +34,11 @@ namespace HomeExamLibrary
             return false;
         }
        
-        public bool Remove(I3DStorageObject s) 
+        public bool Remove(I3DStorageObject s, int id) 
         {
             foreach (I3DStorageObject i3DStorageObject in storage)
             {
-                storage.Remove(s);
+                    storage.Remove(s);
                     return true;
              }
             return false;
@@ -54,6 +54,15 @@ namespace HomeExamLibrary
                 }
             }
             return null;
+        }
+
+        public void ListOfLocations() 
+        {
+            foreach (WareHouseLocation wareHouse in storage)
+            {
+                storage.OrderBy(wareHouseLocation => wareHouseLocation.ID);
+            }
+        
         }
         public bool hasAvailableVolumeForObject(I3DStorageObject s)
         {

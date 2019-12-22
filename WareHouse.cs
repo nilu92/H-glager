@@ -109,17 +109,12 @@ namespace HomeExamLibrary
         {
             foreach (WareHouseLocation whl in locations)
             {
-                
-                    whl.Search(id);
-                   /* if (obj.ID == id)
-                    {
-                        return obj;
-                    }
-                 */   
-                
-
-            }
-
+                I3DStorageObject s = whl.Search(id);
+                if(s != null) 
+                {
+                    return s;
+                }  
+             }
             return null;
         }
 
@@ -149,9 +144,14 @@ namespace HomeExamLibrary
 
             return false;
         }
-
+        public void CreateClone(WareHouseLocation whl) 
+        {
+            whl.Clone();
+            
+        }
         public object Clone()
         {
+            
             throw new NotImplementedException();
         }
 
