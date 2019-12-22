@@ -8,7 +8,7 @@ namespace HomeExamLibrary
     public class WareHouseLocation : ICloneable
     {
         public int FloorID { get; set; }
-        public List<I3DStorageObject> storage = new List<I3DStorageObject>();
+        private List<I3DStorageObject> storage;
 
 
         public double MaxVolume;
@@ -16,24 +16,45 @@ namespace HomeExamLibrary
 
         public WareHouseLocation(double height, double width, double depth)
         {
+            storage = new List<I3DStorageObject>();
+            
             MaxVolume = height * width * depth;
             MaxWeight = 1000;
         }
 
         public bool AddtoLocation(I3DStorageObject s) 
         {
-            foreach (I3DStorageObject i3DStorageObject in storage)
-            {
-                bool avaialable = hasAvailableVolumeForObject(s);
+            bool avaialable = hasAvailableVolumeForObject(s);
                 if(avaialable) 
                 {
                     storage.Add(s);
                     return true;
                 }
-            }
+            
             return false;
         }
        
+        public bool Remove(I3DStorageObject s) 
+        {
+            foreach (I3DStorageObject i3DStorageObject in storage)
+            {
+                storage.Remove(s);
+                    return true;
+             }
+            return false;
+        }
+
+        public I3DStorageObject Search(int id) 
+        {
+            foreach (I3DStorageObject i3DStorageObject in storage)
+            {
+                if(i3DStorageObject.ID == id) 
+                {
+                    return i3DStorageObject;
+                }
+            }
+            return null;
+        }
         public bool hasAvailableVolumeForObject(I3DStorageObject s)
         {
             double currentVolume = 0;

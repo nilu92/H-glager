@@ -110,12 +110,15 @@ namespace HomeExamLibrary
             foreach (WareHouseLocation whl in locations)
             {
                 foreach (I3DStorageObject obj in whl.storage)
-                {
+                 {
+                     
                     if (obj.ID == id)
                     {
                         return obj;
                     }
+                    
                 }
+
             }
 
             return null;
@@ -130,7 +133,8 @@ namespace HomeExamLibrary
 
                     if (obj.ID == id)
                     {
-                        whl.storage.Remove(obj);
+                        whl.Remove(obj);
+                        // whl.storage.Remove(obj);
                         return true;
                         
                     }
@@ -160,28 +164,7 @@ namespace HomeExamLibrary
             throw new NotImplementedException();
         }
 
-        /*public WareHouseLocation DeepCopy() 
-        {
-            foreach (WareHouseLocation  wareHouseLocation in locations)
-            {
-                if(wareHouseLocation == null) 
-                {
-                    return null;
-                }
-                else 
-                {
-
-            
-                    
-                
-                }
-              
-            }
-
-
-            return null;
-        }
-    */
+       
 
     }
 
