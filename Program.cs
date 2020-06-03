@@ -50,20 +50,18 @@ namespace HomeExam
             double MaxDimension = 500;
             bool isFragile = true;
 
-           
-            int ID = 1;
+
             var box = wareHouse.CreateCube(Side, weight, description, MaxDimension, isFragile);
-            box.ID = ID;
-          bool exist = wareHouse.Contains(ID);
+            box.ID = 2;
+            wareHouse.AddStorageAuto(box);
+            bool exist = wareHouse.Contains(2);
             Console.WriteLine(exist);
 
 
 
 
+            /// menu.MainMenu();
 
-
-            menu.MainMenu();
-            
         }
 
 

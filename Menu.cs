@@ -305,7 +305,7 @@ namespace HomeExam
 
 
             Console.ReadLine();
-            MainMenu();
+           // MainMenu();
 
         }
         public void CreateSphere()
