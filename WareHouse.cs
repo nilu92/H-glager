@@ -105,8 +105,23 @@ namespace HomeExamLibrary
             return false;
         }
 
+     /*  public int SearchSpot(int spot) 
+        {
+            WareHouseLocation whl = locations[spot];
+            for (int i = 0; i < spot; i++)
+            {
+                whl.Search(spot);
+                return spot;
+            }
+
+
+            return 0;
+        }
+        */
         public I3DStorageObject Search(int id)
         {
+            
+            
             foreach (WareHouseLocation whl in locations)
             {
                 I3DStorageObject s = whl.Search(id);
@@ -118,6 +133,30 @@ namespace HomeExamLibrary
             return null;
         }
 
+        public int SearchSpot(int spot) 
+        {
+            foreach (var whl in locations)
+            {
+                for (int i = 0; i < whl.GetStorage().Count; i++)
+                {
+                    var box = whl.GetStorage()[i];
+                    if(box != null) 
+                    {
+                        return spot;
+                    }
+                }
+            }
+            return -1;
+        }
+
+
+
+            public bool Contains(int id)
+            {
+                var box = Search(id);
+                return box != null;
+            }
+        
         public bool Remove(I3DStorageObject s,int id)
         {
             foreach (WareHouseLocation whl in locations)
