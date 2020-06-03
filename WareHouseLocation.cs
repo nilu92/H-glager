@@ -1,97 +1,140 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using System.Linq;
 
-namespace HomeExamLibrary
+namespace TentaBibliotek
 {
-    public class WareHouseLocation : ICloneable
+    [Serializable]
+   public class WareHouseLocation : IEnumerable<I3DStorage>
     {
-        public int FloorID { get; set; }
-        private List<I3DStorageObject> storage;
+        
+        public List<I3DStorage> Boxes { get; set; }
 
-
-        public double MaxVolume;
-        public double MaxWeight;
-
-        public WareHouseLocation(double height, double width, double depth)
+        internal bool KanLagraFragile { get; set; }
+        public double Height { get; }
+        public double Width { get; }
+        public double Depth { get; }
+        public double MaxDimension { get; }
+        public double MaxVolume { get; }
+        public decimal MaxWeight { get; }
+        public WareHouseLocation(double height=200,double width=200,double depth=200)
         {
-            storage = new List<I3DStorageObject>();
+           this.Boxes = new List<I3DStorage>();
+            this.Height = height;
+            this.Width = width;
+            this.Depth = depth;
+            this.KanLagraFragile = true;
+            this.MaxDimension = 200;
+            this.MaxVolume  = height * width * depth;
+            this.MaxWeight = 1000;
             
-            MaxVolume = height * width * depth;
-            MaxWeight = 1000;
-        }
-
-        public bool AddtoLocation(I3DStorageObject s) 
-        {
-            bool avaialable = hasAvailableVolumeForObject(s);
-                if(avaialable) 
-                {
-                    storage.Add(s);
-                    return true;
-                }
             
-            return false;
+            
+            
         }
-       
-        public bool Remove(I3DStorageObject s, int id) 
+      public object Clone()
         {
-            foreach (I3DStorageObject i3DStorageObject in storage)
+            WareHouseLocation clone = new WareHouseLocation(this.Height, this.Width, this.Depth);
+            foreach (I3DStorage box in this.Boxes)
             {
-                    storage.Remove(s);
-                    return true;
-             }
-            return false;
-        }
-
-        public I3DStorageObject Search(int id) 
-        {
-            foreach (I3DStorageObject i3DStorageObject in storage)
-            {
-                if(i3DStorageObject.ID == id) 
-                {
-                    return i3DStorageObject;
-                }
+                I3DStorage Copylåda = box.Clone() as I3DStorage;
+                clone.Boxes.Add(Copylåda);
             }
-            return null;
+            return clone;
+
+        }
+       public void Content()
+        {
+            WareHouseLocation clone = this.Clone() as WareHouseLocation;
+            foreach (I3DStorage box in clone.Boxes)
+            {
+                Console.Write("| {0} ", box);
+            }
+            Console.WriteLine();
         }
 
-       
-        public bool hasAvailableVolumeForObject(I3DStorageObject s)
+
+        public int AddLådatolocation(I3DStorage Låda)
         {
+           int result = -1;
+            decimal currentWeight = 0;
             double currentVolume = 0;
-            
-
-            foreach (I3DStorageObject obj in storage)
+            if (Låda.IsFragile==true && this.KanLagraFragile==true )
             {
-                currentVolume += obj.Volume;
+                Boxes.Add(Låda);
+                this.KanLagraFragile= false;
+
+                result = Låda.ID;
+                
+
             }
-          
-            double available = MaxVolume - currentVolume;
-            
 
-            if (s.Volume <= available)
+          
+            foreach (I3DStorage obj in this.Boxes)
             {
-                return true;
+                currentWeight = currentWeight + obj.Weight;
+                currentVolume = currentVolume + obj.Volume;
+            }
+            if (currentWeight + Låda.Weight < this.MaxWeight && Låda.MaxDimension < this.MaxDimension && currentVolume < this.MaxVolume && Låda.IsFragile == false)
+            {
+                this.Boxes.Add(Låda);
+                this.KanLagraFragile = false;
+                result = Låda.ID;
+            }
+            return result;
+        }
+       public int Hittalåda(int id)
+        {
+            if (Boxes.Count == 0)
+            {
+
             }
             else
             {
-                return false;
+                for (int i = 0; i < Boxes.Count; i++)
+                {
+                    if (Boxes[i].ID == id)
+                    {
+                        return i;
+                    }
+                }
+               
             }
-        
+
+            return -1; 
+
         }
-        public List<I3DStorageObject> GetStorage()
+     
+        public void Tabort(int index)
         {
-            return storage;
+            if (index == -1)
+            {
+
+            }
+            else
+            {
+                Boxes.RemoveAt(index);
+            }
         }
 
-
-            public object Clone()
+        public IEnumerator<I3DStorage> GetEnumerator()
         {
-            var copy = (WareHouseLocation)MemberwiseClone();
-            copy.storage = storage.Select(item => (I3DStorageObject)item.Clone()).ToList();
+            return this.Boxes.GetEnumerator();
+        }
 
-            return copy;
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
+        public List<I3DStorage> ListOfContent()
+        {
+            List<I3DStorage> inhålletList = new List<I3DStorage>();
+            foreach (I3DStorage box in Boxes)
+            {
+                inhålletList.Add(box);
+            }
+            return inhålletList;
         }
     }
 }
