@@ -56,9 +56,11 @@ namespace HomeExam
             wareHouse.AddStorageAuto(box);
             bool exist = wareHouse.Contains(2);
             Console.WriteLine(exist);
-
-
-
+            
+            exist = wareHouse.Contains(3);
+            Console.WriteLine(exist);
+            var spot = wareHouse.SearchSpot(2);
+            Console.WriteLine(spot);
 
             /// menu.MainMenu();
 
