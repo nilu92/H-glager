@@ -1,17 +1,27 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
-using System;
 using HomeExamLibrary;
 
 namespace HomeExam
 {
+
+
     public class Menu
     {
 
         public WareHouse wareHouse;
         public WareHouseLocation wareHouseLocation;
+
+
+        double radius;
+        double weight;
+        string description;
+        int maxDimension;
+        bool isFragile;
+
 
         public Menu()
         {
@@ -106,16 +116,60 @@ namespace HomeExam
 
         public void RemoveBox()
         {
-            Console.WriteLine("Funkar!");
-            Console.ReadLine();
-            MainMenu();
+            //Sök efter box
+            // ta bort box
         }
 
         public void Move()
         {
+            //Sök box som ska flyttas
+            //välja plats att flytta till
+            //Kolla om plats är ledig
+            //Flytta till ledig plats
+
+        }
+        public static int UserInt(int input) 
+        {
+            
+            bool wrongInput = true;
+             do
+            {
+
+                try
+                {
+                    input = Convert.ToInt32(Console.ReadLine());
+                    if (input < 1) throw new Exception();
+                    wrongInput = false;
+                }
+                catch
+                {
+                    Console.WriteLine("");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Wrong input!\n" +
+                        " Try again: ");
+                    Console.ResetColor();
+                    wrongInput = true;
+                }
+
+            } while (wrongInput == true);
+
+            return input;
+        }
+       
+        public  void SearchBox()
+        {
+            int spot = 0;
+            int ID = 0;
+            bool exist;
+            Console.Clear();
+            Console.WriteLine("Enter box ID: ");
+             UserInt(ID);
+            exist = wareHouse.Contains(ID);
+            Console.WriteLine(exist);
 
 
         }
+
 
         public void CreateCube()
         {
@@ -232,7 +286,7 @@ namespace HomeExam
             wareHouse.AddStorageAuto(cubeoid);
             bool didPlace = wareHouse.AddStorageAuto(cubeoid);
             Console.WriteLine(didPlace);
-           
+
             var area = cubeoid.Area;
             var volume = cubeoid.Volume;
             Console.WriteLine("Lenght:{0}cm, Height{1}, Depths{2},Weight{3}, Description :{4},IsFragile:{5}\n" + "Total area: {6}cm\n" + "Total Volume: {7}cm^3, ID:{8}", x, y, z, weight, description, isFragile, area, volume, id);
@@ -304,7 +358,7 @@ namespace HomeExam
         public void CreateBlob()
         {
             var maxDimension = 1000;
-            
+
             Console.WriteLine("Enter side:");
             double side;
             while (!double.TryParse(Console.ReadLine(), out side))
@@ -330,12 +384,12 @@ namespace HomeExam
             {
                 Console.WriteLine("Invalid input!");
             }
-            
+
             var blob = wareHouse.CreateBlob(side, weight, description, maxDimension);
             var area = blob.Area;
             var volume = blob.Volume;
-           
-             wareHouse.AddStorageAuto(blob);
+
+            wareHouse.AddStorageAuto(blob);
             Console.WriteLine(" Search ID: {5} ,Side:{0}cm,Weight:{1}kg,Description: {2}\n" + "Total Area: {3}cm\n" + "Total volume: {4}cm^", side, weight, description, area, volume, ID);
             Console.ReadLine();
             MainMenu();
@@ -343,15 +397,9 @@ namespace HomeExam
 
         }
 
-        public void SearchBox()
-        {
-           
-           
-
-         }
 
     }
 
 
-}
 
+}

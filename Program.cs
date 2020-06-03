@@ -42,6 +42,7 @@ namespace HomeExam
 
         public void Run()
         {
+            
             //Test cube
             double Side = 50;
             double weight = 50;
@@ -76,14 +77,11 @@ namespace HomeExam
           
 
 
+    
 
-             
-
-            
-            Console.ReadLine();
-
-            
-            menu.MainMenu();
+           
+           
+             menu.MainMenu();
             
         }
 
